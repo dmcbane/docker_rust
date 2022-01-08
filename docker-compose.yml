@@ -1,10 +1,17 @@
 version: "3.8"
 services:
     dev:
-        image : "rust:1.57-slim-bullseye"
-        command: tail -F anything
-        working_dir: /projects
-        volumes:
-            - ./projects:/projects
         environment:
-            - USER=hdalemcbane
+            - UID
+            - GID
+        build:
+            context: ./build/rust
+            dockerfile: Dockerfile
+            args:
+                UID: ${UID}
+                GID: ${GID}
+        container_name: rust-dev
+        restart: unless-stopped
+        volumes:
+            - ./projects:/home/rustuser/projects
+        user: "${UID}:${GID}"
