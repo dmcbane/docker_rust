@@ -22,6 +22,6 @@ _I won't mention the `docker-compose` versions anymore, but you get the idea._ :
 ### Connect to the container to execute Rust/Cargo commands
 
 ```
-docker exec -it docker_rust_dev_1 /usr/bin/zsh
+docker exec -it rust-dev /usr/bin/zsh
 ```
-_Your container name may vary based on your repository folder name, but it should be easy to figure out with `docker ps`._
+
